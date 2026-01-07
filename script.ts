@@ -17,6 +17,7 @@ let randomValue: any = "value"
 
 
 // enum
+/*
 enum Direction {
     Up,
     Down,
@@ -35,3 +36,35 @@ enum Color {
 
 const setColor: Color = Color.Blue
 console.log(setColor);
+*/
+
+
+// functions
+function add(a: number, b: number): number {
+    return a + b
+}
+console.log(add(4, 9));
+
+
+function sayHi(name: string): string {
+    return `Hi ${name}`
+}
+console.log(sayHi('reza'));
+
+
+function logMessage(message: string): void {
+    console.log(`your message is: ${message}`);
+}
+logMessage('lorem ipsum...')
+
+
+function person(name: string, age?: number): string {
+    return age ? `Hi ${name} with age ${age}` : `Hi ${name}`
+}
+console.log(person('mohammadreza'));
+
+
+function greet(name: string, greeting: string = "Hi"): string {
+    return `${greeting} ${name}`
+}
+console.log(greet('alireza'));

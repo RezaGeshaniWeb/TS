@@ -36,24 +36,33 @@ const setColor: Color = Color.Blue
 console.log(setColor);
 */
 // functions
-function add(a, b) {
-    return a + b;
+/*
+function add(a: number, b: number): number {
+    return a + b
 }
 console.log(add(4, 9));
-function sayHi(name) {
-    return "Hi ".concat(name);
+
+function sayHi(name: string): string {
+    return `Hi ${name}`
 }
 console.log(sayHi('reza'));
+
+function person(name: string, age?: number): string {
+    return age ? `Hi ${name} with age ${age}` : `Hi ${name}`
+}
+console.log(person('mohammadreza'));
+
+function greet(name: string, greeting: string = "Hi"): string {
+    return `${greeting} ${name}`
+}
+console.log(greet('alireza'));
+*/
+// void
 function logMessage(message) {
     console.log("your message is: ".concat(message));
 }
 logMessage('lorem ipsum...');
-function person(name, age) {
-    return age ? "Hi ".concat(name, " with age ").concat(age) : "Hi ".concat(name);
+// never
+function throwError(message) {
+    throw new Error(message);
 }
-console.log(person('mohammadreza'));
-function greet(name, greeting) {
-    if (greeting === void 0) { greeting = "Hi"; }
-    return "".concat(greeting, " ").concat(name);
-}
-console.log(greet('alireza'));

@@ -64,6 +64,7 @@ console.log(greet('alireza'));
 
 
 // void
+/*
 function logMessage(message: string): void {
     console.log(`your message is: ${message}`);
 }
@@ -74,3 +75,15 @@ logMessage('lorem ipsum...')
 function throwError(message: string): never {
     throw new Error(message)
 }
+*/
+
+
+// function Overloading
+function combine(a: number, b: number): number
+function combine(a: string, b: string): string
+function combine(a: any, b: any): any {
+    return a + b
+}
+
+console.log(combine(10, 70));
+console.log(combine('reza', 'geshani'));

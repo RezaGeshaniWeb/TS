@@ -79,6 +79,7 @@ function throwError(message: string): never {
 
 
 // function Overloading
+/*
 function combine(a: number, b: number): number
 function combine(a: string, b: string): string
 function combine(a: any, b: any): any {
@@ -87,3 +88,46 @@ function combine(a: any, b: any): any {
 
 console.log(combine(10, 70));
 console.log(combine('reza', 'geshani'));
+*/
+
+
+// example todo:
+enum Status {
+    Pending = "در انتظار",
+    InProgress = "در حال انجام",
+    Done = "انجام شده",
+}
+
+let tasks: Array<{ id: number, title: string, status: Status }> = []
+
+function addTask(title: string, status: Status): void {
+    const newTask = { id: tasks.length + 1, title, status }
+    tasks.push(newTask)
+    console.log(`task ${title} added!`);
+}
+
+function showTasks(): void {
+    console.log(`Tasks List: `)
+    tasks.map(task => console.log(`${task.id} - ${task.title} - ${task.status}`))
+}
+
+function updateTask(id: number, newStatus: Status): void {
+    let task = tasks.find(task => task.id == id)
+    if (task) {
+        task.status = newStatus
+        console.log('task status was updated');
+    } else {
+        console.log('not found');
+    }
+}
+
+function deleteTask(id: number): void {
+    tasks = tasks.filter(task => task.id != id)
+}
+
+addTask("Learning Task", Status.Pending)
+addTask("Going to gym", Status.Done)
+updateTask(1, Status.InProgress)
+showTasks()
+deleteTask(1)
+showTasks()

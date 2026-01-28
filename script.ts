@@ -92,6 +92,7 @@ console.log(combine('reza', 'geshani'));
 
 
 // example todo:
+/*
 enum Status {
     Pending = "در انتظار",
     InProgress = "در حال انجام",
@@ -131,3 +132,299 @@ updateTask(1, Status.InProgress)
 showTasks()
 deleteTask(1)
 showTasks()
+*/
+
+
+// Interface
+/*
+interface User {
+    id: number,
+    name: string,
+    email: string,
+}
+
+const user1: User = {
+    id: 1,
+    name: 'reza',
+    email: 'reza@gmail.com',
+}
+console.log(user1)
+
+
+function showInfo(user: User) {
+    console.log(user.email)
+}
+showInfo(user1)
+*/
+
+
+// type
+/*
+type UserType = {
+    id: number,
+    name: string,
+    email: string,
+}
+
+const user2: UserType = {
+    id: 2,
+    name: 'alireza',
+    email: 'alireza@gmail.com',
+}
+console.log(user2);
+
+
+type NumberArray = number[]
+const numbers: NumberArray = [1, 2, 3]
+console.log(numbers);
+
+
+type Person = [string, number]
+const person: Person = ['reza', 20]
+console.log(person)
+*/
+
+
+// Interface extends
+/*
+interface Person {
+    name: string,
+}
+
+interface Employee extends Person {
+    id: number,
+    jobTitle: string,
+}
+
+const employee1: Employee = {
+    id: 1,
+    jobTitle: 'developer',
+    name: 'reza',
+}
+console.log(employee1)
+*/
+
+
+// combine types
+/*
+type Child = {
+    name: string,
+}
+
+type Student = Child & {
+    id: number,
+    age: number,
+}
+
+const student1: Student = {
+    id: 1,
+    age: 25,
+    name: 'reza',
+}
+console.log(student1);
+*/
+
+
+// interface nested
+/*
+interface Address {
+    street: string,
+    city: string,
+    country: string,
+}
+
+interface User {
+    id: number,
+    name: string,
+    address: Address,
+}
+
+const user: User = {
+    id: 1,
+    name: 'reza',
+    address: {
+        street: 'main',
+        city: 'tehran',
+        country: 'iran',
+    }
+}
+console.log(user)
+*/
+
+
+// type nested
+/*
+type Address = {
+    street: string,
+    city: string,
+    country: string,
+}
+
+type User = {
+    id: number,
+    name: string,
+    address: Address,
+}
+
+const user: User = {
+    id: 1,
+    name: 'reza',
+    address: {
+        street: 'main',
+        city: 'tehran',
+        country: 'iran',
+    }
+}
+console.log(user)
+*/
+
+
+// Readonly - Optional
+/*
+interface User {
+    readonly id: number,
+    name: string,
+    age?: number
+}
+
+const user: User = {
+    id: 1,
+    name: 'reza',
+    // age: 25
+}
+user.name = 'ali'
+console.log(user)
+*/
+
+
+// class
+/*
+class Person {
+    name: string
+    age: number
+
+    constructor(name: string, age: number) {
+        this.name = name
+        this.age = age
+    }
+
+    introduce(): void {
+        console.log(`Hi my name is ${this.name} and I am ${this.age} years old.`)
+    }
+}
+
+const person1 = new Person("reza", 25)
+person1.introduce()
+*/
+
+
+// public , private , protected
+/*
+class User {
+    public name: string
+    private email: string
+    protected status: string
+
+    constructor(name: string, email: string, status: string) {
+        this.name = name
+        this.email = email
+        this.status = status
+    }
+
+    public getUserInfo() {
+        console.log(`name is: ${this.name}, status is: ${this.status}`)
+    }
+
+    public updateStatus(newStatus: string) {
+        this.status = newStatus
+    }
+
+    private getEmail() {
+        return this.email
+    }
+}
+
+const user = new User('reza', 'reza@gmail.com', 'active')
+user.getUserInfo()
+console.log(user.name);
+
+user.updateStatus('inactive')
+user.getUserInfo()
+
+class Admin extends User {
+    constructor(name: string, email: string, status: string) {
+        super(name, email, status)
+    }
+
+    public getAdminInfo() {
+        console.log(`${this.name} - ${this.status}`);
+    }
+}
+*/
+
+
+// Generics
+/*
+function showFirst<T>(arr: T[]): T {
+    return arr[0]
+}
+
+console.log(showFirst(['reza', 'perjman', 'ali']))
+console.log(showFirst([22, 33, 44]))
+
+let value: Array<number> = [3, 4, 5]
+
+interface Box<T> {
+    content: T
+}
+
+let box1: Box<number> = { content: 500 }
+let box2: Box<string> = { content: 'Hi' }
+*/
+
+
+// NameSpace
+/*
+namespace Products {
+    interface Product {
+        readonly id: number,
+        name: string,
+        price?: number,
+    }
+
+    const products: Product[] = [
+        { id: 1, name: 'mobile', price: 10_000_000 },
+        { id: 2, name: 'tablet', price: 7_000_000 },
+        { id: 3, name: 'laptop', price: 5_000_000 },
+    ]
+
+    export function listProduct(): string[] {
+        return products.map(item => `${item.name} - ${item.price}`)
+    }
+
+    console.log(listProduct());
+}
+
+namespace Customers {
+    interface Customer {
+        readonly id: number,
+        name: string,
+        email?: string,
+    }
+
+    const people: Customer[] = [
+        { id: 1, name: 'reza', email: 'reza@gmail.com' },
+        { id: 2, name: 'alireza', email: 'alireza@gmail.com' },
+        { id: 3, name: 'mahdi', email: 'mahdi@gmail.com' },
+    ]
+
+    export function showPeople(): string[] {
+        return people.map(item => `${item.name} - ${item.email}`)
+    }
+
+    console.log(showPeople());
+}
+
+console.log(Products.listProduct());
+console.log(Customers.showPeople());
+*/
